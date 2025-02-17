@@ -20,7 +20,6 @@
 		02495FDD2711A3E30023230B /* BoidsMajic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02495FDC2711A3E30023230B /* BoidsMajic.swift */; };
 		02543C7D271D3C29009AE283 /* MapGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02543C7C271D3C29009AE283 /* MapGenerator.swift */; };
 		02543C7F271D665E009AE283 /* CircleDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02543C7E271D665E009AE283 /* CircleDesign.swift */; };
-		0258C0AA28ED31FE00F6F14B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0258C0A928ED31FE00F6F14B /* Colors.xcassets */; };
 		028DC773271EC45200B7AF1B /* Bound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DC772271EC45200B7AF1B /* Bound.swift */; };
 		028DC775271EED0C00B7AF1B /* Fish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DC774271EED0C00B7AF1B /* Fish.swift */; };
 		029E6A87271EA64F00F6A8EF /* ColorRain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029E6A86271EA64F00F6A8EF /* ColorRain.swift */; };
@@ -47,7 +46,6 @@
 		02495FDC2711A3E30023230B /* BoidsMajic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoidsMajic.swift; sourceTree = "<group>"; };
 		02543C7C271D3C29009AE283 /* MapGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGenerator.swift; sourceTree = "<group>"; };
 		02543C7E271D665E009AE283 /* CircleDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleDesign.swift; sourceTree = "<group>"; };
-		0258C0A928ED31FE00F6F14B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		028DC772271EC45200B7AF1B /* Bound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bound.swift; sourceTree = "<group>"; };
 		028DC774271EED0C00B7AF1B /* Fish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fish.swift; sourceTree = "<group>"; };
 		029E6A86271EA64F00F6A8EF /* ColorRain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRain.swift; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 				021B287C270CB2590093B0C9 /* ArtWork */,
 				021B286E270CB08C0093B0C9 /* CanvasApp.swift */,
 				021B2872270CB08D0093B0C9 /* Assets.xcassets */,
-				0258C0A928ED31FE00F6F14B /* Colors.xcassets */,
 				02D78D9327295F340026A66A /* CanvasRelease.entitlements */,
 				02D78D9227295F220026A66A /* Canvas.entitlements */,
 				021B2874270CB08D0093B0C9 /* Preview Content */,
@@ -200,7 +197,6 @@
 			files = (
 				021B2876270CB08D0093B0C9 /* Preview Assets.xcassets in Resources */,
 				021B2873270CB08D0093B0C9 /* Assets.xcassets in Resources */,
-				0258C0AA28ED31FE00F6F14B /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
