@@ -107,7 +107,7 @@ struct BoidsDesign: View {
         init() {
             self.color = Color(hue: Double.random(in: 0 ... 1), saturation: 1.0, brightness: 0.8, opacity: 0.8)
             let x = CGFloat.random(in: 0 ... UIScreen.main.bounds.width)
-            let y = CGFloat.random(in: 0 ... UIScreen.main.bounds.height - 80)
+            let y = CGFloat.random(in: 0 ... UIScreen.main.bounds.height)
             
             let dire = CGFloat.random(in: 0 ... 1) * 2.0 * CGFloat.pi
             self.vx = CGFloat(cos(dire) * BoidsDesign.OBJECT_VELOCITY)
@@ -130,10 +130,10 @@ struct BoidsDesign: View {
             }
             
             if nextY < -10 {
-                nextY = UIScreen.main.bounds.height - 80 - 10
+                nextY = UIScreen.main.bounds.height
             }
             
-            if nextY > UIScreen.main.bounds.height - 80 - 10 {
+            if nextY > UIScreen.main.bounds.height {
                 nextY = -10
             }
             
