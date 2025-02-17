@@ -23,9 +23,14 @@ func canvasHeight() -> CGFloat {
     return UIScreen.main.bounds.height
 }
 
-func screenshot(rect: CGRect) -> UIImage {
-    let scene = UIApplication.shared.connectedScenes.first as! UIWindowScene
-    return scene.keyWindow!.rootViewController!.view!.getImage(rect: rect)
+func screenshot(rect: CGRect) -> UIImage? {
+    guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+          let window = scene.windows.first(where: { $0.isKeyWindow }),
+          let topViewController = window.rootViewController?.topMostViewController()
+    else {
+        return nil
+    }
+    return topViewController.view.getImage(rect: rect)
 }
 
 struct RectangleGetter: View {
@@ -42,28 +47,6 @@ struct RectangleGetter: View {
             self.rect = proxy.frame(in: .global)
         }
         return Rectangle().fill(Color.clear)
-    }
-}
-
-extension Shape {
-    func fillAndStroke<S: ShapeStyle>(
-        _ fillContent: S,
-        strokeContent: S,
-        strokeStyle: StrokeStyle
-    ) -> some View {
-        ZStack {
-            self.fill(fillContent)
-            self.stroke(strokeContent, style: strokeStyle)
-        }
-    }
-}
-
-extension UIView {
-    func getImage(rect: CGRect) -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: rect)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
-        }
     }
 }
 
@@ -90,5 +73,40 @@ struct HeaderLayer: View {
             .padding(16)
             Spacer()
         }
+    }
+}
+
+extension Shape {
+    func fillAndStroke<S: ShapeStyle>(
+        _ fillContent: S,
+        strokeContent: S,
+        strokeStyle: StrokeStyle
+    ) -> some View {
+        ZStack {
+            self.fill(fillContent)
+            self.stroke(strokeContent, style: strokeStyle)
+        }
+    }
+}
+
+extension UIView {
+    func getImage(rect: CGRect) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: rect)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
+
+extension UIViewController {
+    func topMostViewController() -> UIViewController {
+        if let presented = presentedViewController {
+            return presented.topMostViewController()
+        } else if let navigation = self as? UINavigationController {
+            return navigation.visibleViewController?.topMostViewController() ?? navigation
+        } else if let tab = self as? UITabBarController {
+            return tab.selectedViewController?.topMostViewController() ?? tab
+        }
+        return self
     }
 }

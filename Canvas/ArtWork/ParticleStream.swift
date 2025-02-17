@@ -115,7 +115,7 @@ struct ParticleStream: View {
             self.color = Color(hue: hue / 360.0, saturation: 1.0, brightness: 0.6, opacity: 1.0)
             
             let x = CGFloat.random(in: 0 ... UIScreen.main.bounds.width)
-            let y = CGFloat.random(in: 0 ... UIScreen.main.bounds.height - 80)
+            let y = CGFloat.random(in: 0 ... UIScreen.main.bounds.height)
             self.points = [CGPoint(x: x, y: y)]
         }
     
@@ -142,10 +142,10 @@ struct ParticleStream: View {
             }
 
             if nextY < 0 {
-                nextY = UIScreen.main.bounds.height - 80
+                nextY = UIScreen.main.bounds.height
             }
 
-            if nextY > UIScreen.main.bounds.height - 80 {
+            if nextY > UIScreen.main.bounds.height {
                 nextY = 0
             }
             
