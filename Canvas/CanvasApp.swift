@@ -2,38 +2,34 @@ import SwiftUI
 
 @main
 struct CanvasApp: App {
-    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
-
-    private let gridItemLayout = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-    ]
-
     @State private var selectedArtwork: ArtWork?
 
     var body: some Scene {
         WindowGroup {
-            ScrollView {
-                LazyVGrid(columns: gridItemLayout, alignment: HorizontalAlignment.leading, spacing: 2) {
-                    ForEach(ArtWork.allCases) { work in
-                        Button(action: {
-                            selectedArtwork = work
-                        }) {
-                            work.thumbnail
+            NavigationStack {
+                ScrollView {
+                    LazyVGrid(
+                        columns: [
+                            GridItem(.flexible(), spacing: 0),
+                            GridItem(.flexible(), spacing: 0),
+                        ],
+                        alignment: HorizontalAlignment.leading, spacing: 0)
+                    {
+                        ForEach(ArtWork.allCases) { work in
+                            Button(action: {
+                                selectedArtwork = work
+                            }) {
+                                work.thumbnail
+                            }
                         }
                     }
                 }
+                .navigationTitle("Artwork")
             }
             .fullScreenCover(item: $selectedArtwork) { artwork in
                 artwork.canvas.edgesIgnoringSafeArea(.all)
             }
         }
-    }
-}
-
-class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        return true
     }
 }
 
@@ -113,8 +109,7 @@ struct Thumbnail: View {
         Image(name)
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .frame(width: size)
-            .frame(height: size)
+            .frame(width: size, height: size)
             .clipped()
     }
 }
